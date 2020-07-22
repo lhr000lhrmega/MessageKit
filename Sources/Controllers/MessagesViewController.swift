@@ -91,8 +91,10 @@ UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
 
     internal var messageCollectionViewBottomInset: CGFloat = 0 {
         didSet {
-            messagesCollectionView.contentInset.bottom = messageCollectionViewBottomInset
-            messagesCollectionView.scrollIndicatorInsets.bottom = messageCollectionViewBottomInset
+            UIView.performWithoutAnimation {
+                messagesCollectionView.contentInset.bottom = messageCollectionViewBottomInset
+                messagesCollectionView.scrollIndicatorInsets.bottom = messageCollectionViewBottomInset
+            }
         }
     }
 
@@ -410,6 +412,8 @@ UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
             break
         }
     }
+    
+    
 
     // MARK: - Helpers
     
